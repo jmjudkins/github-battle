@@ -1,6 +1,7 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module exports = {
+module.exports = {
   entry: './app/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -9,8 +10,13 @@ module exports = {
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] s}
+      { test: /\.css$/, use: ['style-loader', 'css-loader']}
     ]
   },
-  mode: 'development'
+  mode: 'development',
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'app/index.html'
+    })
+  ]
 }
